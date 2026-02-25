@@ -34,3 +34,10 @@
       state: enabled
       permanent: true
       immediate: true
+
+  handlers:
+
+  - name: Reboot NFS
+    service:
+      name: nfs-server
+      state: restarted
