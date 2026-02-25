@@ -19,8 +19,37 @@
     notify: Reboot servers
     when: ansible_os_family == "Debian"
 
+  - name: Change line in file in sshd_config
+    ansible.builtin.lineinfile:
+      path: /etc/ssh/sshd_config
+      insertafter: "#PermitRootLogin"
+      line: "PermitRootLogin no"
+      state: present
+    become: true
+    notify: Reset ssh service ubuntu
+    when: ansible_os_family == "Debian"
+
+  - name: Change line in file in sshd_config
+    ansible.builtin.lineinfile:
+      path: /etc/ssh/sshd_config
+      insertafter: "#PermitRootLogin"
+      line: "PermitRootLogin no"
+      state: present
+    become: true
+    notify: Reset sshd service centos
+    when: ansible_os_family == "RedHat"
+
   handlers:
 
   - name: Reboot servers
     ansible.builtin.reboot:
-      
+  
+  - name: Reset ssh service ubuntu
+    service:
+      name: ssh
+      state: restarted
+
+  - name: Reset sshd service centos
+    service:
+      name: sshd
+      state: restarted  
