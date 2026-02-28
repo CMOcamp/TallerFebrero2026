@@ -18,7 +18,7 @@ Construir una infraestructura mínima y reproducible utilizando Ansible y versio
                  192.168.10.0/24
  ┌─────────────────────────────────────┐
  │                                     │
- │     nfs01 (CentOS Stream 9)         │
+ │     nfs01 (CentOS Stream 9)        │
  │     IP: 192.168.10.11               │
  │     /srv/nfs/shared                 │
  │                                     │
