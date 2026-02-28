@@ -34,7 +34,7 @@ Construir una infraestructura mínima y reproducible utilizando Ansible y versio
 
 ---
 
-# ⚙ Requisitos previos
+#  Requisitos previos
 
 - Ansible instalado en máquina de control
 - Acceso SSH a ambos nodos
