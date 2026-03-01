@@ -72,7 +72,7 @@ Resultado esperado:
 
 ---
 
-## En app01 (autofs)
+## En Clientes (autofs)
 
 Antes de acceder:
 
