@@ -1,7 +1,4 @@
 ---
-- hosts: ubuntu
-  become: true
-
-  - import_playbook: playbooks/nfs-server.yaml
-  - import_playbook: playbooks/nfs-client.yaml
-  - import_playbook: plabooks/nfs-systemd.yaml
+- import_playbook: playbooks/nfs-server.yaml
+- import_playbook: playbooks/nfs-client.yaml
+- import_playbook: playbooks/nfs-systemd.yaml
