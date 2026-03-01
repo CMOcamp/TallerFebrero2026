@@ -62,13 +62,12 @@ Puede ejecutarse múltiples veces sin modificar configuraciones ya aplicadas.
 ## En nfs01
 
 systemctl is-active nfs-server
+
 exportfs -v
-ls -l /srv/nfs/shared/README-NFS.txt
 
 Resultado esperado:
 - active
 - Export en modo rw para 192.168.10.0/24
-- Archivo README-NFS.txt existente
 
 ---
 
@@ -92,8 +91,11 @@ Ahora debe mostrar el mount NFS activo.
 ## Servicio HTTP
 
 systemctl status shared-http --no-pager
+
 curl -I http://localhost:8080/
+
 curl http://localhost:8080/README-NFS.txt
+
 journalctl -u shared-http -n 50 --no-pager
 
 Resultado esperado:
