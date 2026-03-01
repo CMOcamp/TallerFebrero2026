@@ -15,22 +15,15 @@ Construir una infraestructura mínima y reproducible utilizando Ansible y versio
 
 # Arquitectura
 
-                 192.168.10.0/24
- ┌─────────────────────────────────────┐
- │                                     │
- │     nfs01 (CentOS Stream 9)        │
- │     IP: 192.168.10.11               │
- │     /srv/nfs/shared                 │
- │                                     │
- └───────────────┬─────────────────────┘
-                 │   NFS (RW)
-                 │
- ┌───────────────▼─────────────────────┐
- │     app01 (Ubuntu 24.04)            │
- │     IP: 192.168.10.21               │
- │     /mnt/shared (autofs)            │
- │     Python HTTP server :8080        │
- └─────────────────────────────────────┘
+NFS Server (fileserver)  
+└── /srv/nfs/shared (exportado por NFS)
+
+Clientes (grupo ubuntu)  
+└── /mnt/shared (montado con autofs)
+
+Servicio adicional  
+└── Servidor web Python en puerto 8080 mostrando el contenido del share
+
 
 ---
 
