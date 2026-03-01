@@ -36,6 +36,16 @@ Servicio adicional
 
 ---
 
+## Playbooks
+
+| Playbook | Descripción |
+|----------|------------|
+| `nfs-server.yaml` | Instala y configura el servidor NFS, exporta el directorio y configura firewall |
+| `nfs-cliente.yaml` | Configura clientes NFS con automontaje mediante autofs |
+| `nfs-systemd.yaml` | Crea y habilita un servicio systemd que publica el share vía HTTP |
+
+---
+
 #  Ejecución
 
 Desde la raíz del repositorio:
