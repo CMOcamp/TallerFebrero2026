@@ -1,0 +1,58 @@
+---
+- name: Verify NFS Server
+  hosts: fileserver
+  become: true
+  tasks:
+    - name: NFS Active
+      ansible.builtin.command: systemctl is-active nfs-server
+      register: nfs_status
+
+    - name: Show NFS status
+      ansible.builtin.debug:
+        var: nfs_status.stdout
+
+    - name: Export configured
+      ansible.builtin.command: exportfs -v
+      register: exports
+
+    - name: Show exports
+      ansible.builtin.debug:
+        var: exports.stdout
+
+- name: Verify Clients
+  hosts: appserver
+  become: true
+  tasks:
+    - name: Active autofs
+      ansible.builtin.command: systemctl is-active autofs
+      register: autofs_status
+
+    - name: Show autofs
+      ansible.builtin.debug:
+        var: autofs_status.stdout
+
+    - name: Verify montaje
+      ansible.builtin.shell: grep /mnt/shared /proc/mounts
+      register: mount_check
+      failed_when: mount_check.rc !=0
+
+    - name: List content
+      ansible.builtin.command: ls /mnt/shared
+      register: shared_files
+
+    - name: Show files
+      ansible.builtin.debug:
+        var: shared_files.stdout
+
+- name: Verify HTTP service
+  hosts: appserver
+  tasks:
+    - name: HTTP replies
+      ansible.builtin.uri:
+        url: http://localhost:8080/README-NFS.txt
+        return_content: true
+      register: http_check
+
+    - name: Show HTTP answer
+      ansible.builtin.debug:
+        var: http_check.status
