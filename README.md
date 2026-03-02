@@ -105,4 +105,10 @@ Resultado esperado:
 
 ---
 
+## Verificacion 
+
+- Se creo un playbook  para verificar todos los requerimientos del obligatorio llamado verification.yaml 
+
+---
+
 Infraestructura automatizada, reproducible e idempotente.
